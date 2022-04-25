@@ -15,7 +15,7 @@ include_once("includes/header.php");
                             <h2 class="h2">Ajouter un Sous-Service</h2>
                         </div>
                         <div class="card-body">
-                            <form action="db/addservice.php" method="post">
+                            <form action="db/addSservice.php" method="post">
 
                                 <div class="row">
                                     <div class="col-md-1">
@@ -26,10 +26,14 @@ include_once("includes/header.php");
                                         <label for="Prenom">Nom du Service : </label>
                                         <?php
                                         $id = $_GET["id"];
-                                        while($obj = (mysqli_query($conn,"SELECT * FROM service WHERE id = ".$id))->fetch_assoc()){
+                                        $sql = mysqli_query($conn,"SELECT * FROM service where id = ".$id);
+                                        while($obj = $sql->fetch_assoc()){
                                             $name = $obj["nom"];
                                         }
-                                        
+                                        echo '<input class="form-control" type="hidden" id="service_id" name="service_id"
+                                        value="'.$id.'" required>
+                                        <input class="form-control" type="text" id="service_name" name="service_nom"
+                                        value="'.$name.'" readonly>';
                                         ?>
                                     </div>
                                 </div>
@@ -39,9 +43,9 @@ include_once("includes/header.php");
                                     </div>
                                     <div class="col-md-9 my-2">
 
-                                        <label for="nom">Réfèrence du service</label>
-                                        <input class="form-control" type="text" id="ref" name="ref"
-                                            placeholder="Reference" required>
+                                        <label for="nom">Nom du Sous-Service</label>
+                                        <input class="form-control" type="text" id="sserv" name="sserv"
+                                            placeholder="Nom Sous-Service" required>
 
                                     </div>
                                 </div>
