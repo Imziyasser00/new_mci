@@ -35,4 +35,9 @@ $(document).ready(function() {
         $("#serv_down").slideToggle(500);
     });
 });
+$(document).ready(function() {
+    $("#document_down").click(function() {
+        $("#doc_down").slideToggle(500);
+    });
+});
 </script>

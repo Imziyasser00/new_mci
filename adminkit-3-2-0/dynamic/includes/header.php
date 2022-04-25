@@ -101,8 +101,21 @@ include_once 'db/checker.php';
                                         des
                                         sous-services</a></span></li>
                         </div>
-                        <li class="sidebar-link"><i class="align-middle" data-feather="corner-right-down"></i> <span
-                                class="align-middle">Gestion des documents</span></li>
+                        <li class="sidebar-link" id="document_down"><i class="align-middle"
+                                data-feather="corner-right-down"></i> <span class="align-middle">Gestion des
+                                documents</span></li>
+                        <div id="doc_down" style="display:none;" class="serv_down">
+                            <li class="sidebar-link"><a class="sidebar-link" href="listeServices.php"><i
+                                        class="align-middle" data-feather="align-justify"></i><span
+                                        class="align-middle"> Liste des
+                                        services</span></a>
+                            </li>
+                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
+                                        href="ListeSservice.php"><i class="align-middle"
+                                            data-feather="align-justify"></i>Liste
+                                        des
+                                        sous-services</a></span></li>
+                        </div>
                         <li class="sidebar-link"><i class="align-middle" data-feather="corner-right-down"></i> <span
                                 class="align-middle">Gestion des diffusions</span></li>
                     </ul>
