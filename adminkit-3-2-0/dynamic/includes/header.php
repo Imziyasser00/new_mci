@@ -105,10 +105,10 @@ include_once 'db/checker.php';
                                 data-feather="corner-right-down"></i> <span class="align-middle">Gestion des
                                 documents</span></li>
                         <div id="doc_down" style="display:none;" class="serv_down">
-                            <li class="sidebar-link"><a class="sidebar-link" href="listeServices.php"><i
+                            <li class="sidebar-link"><a class="sidebar-link" href="listeDocuments.php"><i
                                         class="align-middle" data-feather="align-justify"></i><span
                                         class="align-middle"> Liste des
-                                        services</span></a>
+                                        Document</span></a>
                             </li>
                             <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
                                         href="ListeSservice.php"><i class="align-middle"
