@@ -15,7 +15,7 @@ include_once("includes/header.php");
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6 mt-2">
-                                    <h2 class="h2">Liste des Services</h2>
+                                    <h2 class="h2">Liste des Sous-Services</h2>
                                 </div>
                                 <div class="col-md-5">
 
@@ -23,7 +23,7 @@ include_once("includes/header.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="db/add_user.php" method="post">
+                            <form action="ListeSservice1.php" method="post">
                                 <select name="ser" class="form-control mb-5" onchange="getDepartements(this.value);"
                                     required>
 
