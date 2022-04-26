@@ -50,7 +50,7 @@ include_once("includes/header.php");
                                         echo '<td>'.$obj['dateAPP'].'</td>
                                         <td>'.$obj['DATTREV'].'</td>
                                         <td class="table-action">
-                                            <a href="'.$obj["lien"].'"><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>
+                                            <a href="'.$obj["lien"].'" target="_blank"><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>
                                             <a href="moduser.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
                                             <a href="db/deleteUser.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
                                         </td>
