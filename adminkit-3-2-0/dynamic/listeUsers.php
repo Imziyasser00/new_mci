@@ -40,8 +40,8 @@ include_once("includes/header.php");
                                         <td>'.$obj['serv'].'</td>
                                         <td>'.$obj['fonction'].'</td>
                                         <td class="table-action">
-                                            <a href="moduser.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
-                                            <a href="db/deleteUser.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
+                                            <a href="moduser.php?id='.$obj["id"].'" class="confirmation"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
+                                            <a href="db/deleteUser.php?id='.$obj["id"].'" class="confirmation"><i class="align-middle" data-feather="trash-2"></i></a>
                                         </td>
                                     </tr>';
                                     }

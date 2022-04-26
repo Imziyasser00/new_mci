@@ -15,12 +15,14 @@ $obj =$result->fetch_assoc();
 
 echo $obj["nom"];
 
+$sql = mysqli_query($conn,"UPDATE document  set lien = replace(lien,'".$obj["nom"]."','".$nom."');");
+
 rename("../Documents/".$obj["nom"],"../Documents/".$nom);
 
 mysqli_query($conn,"UPDATE `service` SET `nom`='$nom',`ref`='$ref' WHERE id = ".$id);
 
 
-header("Location: ../listeServices.php");
+//header("Location: ../listeServices.php");
 
 
 ?>

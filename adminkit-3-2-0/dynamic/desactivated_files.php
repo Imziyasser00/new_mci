@@ -21,29 +21,29 @@ include_once("includes/header.php");
 
                                 </div>
                                 <div class="col-md-1 mt-2 mx-5 ">
-                                    <input id="des" type="submit" class="btn btn-danger" value="Desactiver">
+                                    <input id="activeSubmit" type="submit" class="btn btn-success" value="Activer">
                                 </div>
                             </div>
                         </div>
-                        <form id="desactive_form" action="db/desactiverDoc.php" method="post">
+                        <form id="active_form" action="db/activerDoc.php" method="post">
                             <div class="card-body">
                                 <table class="table table-striped table-hover ">
                                     <thead>
                                         <tr>
                                             <th style="width:15%;">Sous-Service</th>
-                                            <th style="width:25%">Nom</th>
-                                            <th style="width:10%">Type</th>
-                                            <th style="width:10%">Etat</th>
-                                            <th style="width:15%">Date App</th>
-                                            <th style="width:15%">Date Revs</th>
-                                            <th style="width:25%">Action</th>
+                                            <th style="width:20%">Nom</th>
+                                            <th style="width:15%">Type</th>
+                                            <th style="width:15%">Etat</th>
+                                            <th style="width:10%">Date App</th>
+                                            <th style="width:10%">Date Revs</th>
+                                            <th style="width:15%">Action</th>
                                             <th style="width: 15%">Activer</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php   
                                     
-                                    $query = ("SELECT * FROM document where valide = '0'");
+                                    $query = ("SELECT * FROM document where valide = '1'");
                                     $result = mysqli_query($conn,$query);
                                     while($obj = $result->fetch_assoc()){
                                         $sql = mysqli_query($conn,"SELECT * FROM sservice WHERE id = ".$obj["id_service"]);
@@ -89,11 +89,10 @@ include_once("includes/header.php");
 
         </div>
     </main>
-
     <?php include_once('includes/footer.php');  ?>
 </div>
 </div>
-<script src="js/desactive_file.js"></script>
+<script src="js/active_file.js"></script>
 <script src="js/app.js"></script>
 
 </body>

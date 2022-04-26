@@ -44,8 +44,8 @@ include_once("includes/header.php");
                                         <td>'.$obj['nom'].'</td>
                                         <td>'.$obj['ref'].'</td>
                                         <td class="table-action">
-                                            <a href="modService.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
-                                            <a href="db/deleteService.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
+                                            <a class="confirmation" href="modService.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
+                                            <a class="confirmation" href="db/deleteService.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
                                         </td>
                                     </tr>';
                                     }

@@ -11,6 +11,7 @@ include_once 'db/checker.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="author" content="AdminKit">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <meta name="keywords"
         content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
@@ -34,7 +35,7 @@ include_once 'db/checker.php';
 
 </head>
 
-<body>
+<body data-theme="dark">
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
@@ -111,10 +112,8 @@ include_once 'db/checker.php';
                                         Document</span></a>
                             </li>
                             <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="ListeSservice.php"><i class="align-middle"
-                                            data-feather="align-justify"></i>Liste
-                                        des
-                                        sous-services</a></span></li>
+                                        href="TypeDoc.php"><i class="align-middle"
+                                            data-feather="align-justify"></i>Types des documents</a></span></li>
                         </div>
                         <li class="sidebar-link"><i class="align-middle" data-feather="corner-right-down"></i> <span
                                 class="align-middle">Gestion des diffusions</span></li>

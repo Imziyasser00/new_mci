@@ -51,8 +51,8 @@ include_once("includes/header.php");
                                         <td>'.$name.'</td>
                                         <td>'.$obj['nom'].'</td>
                                         <td class="table-action">
-                                            <a href="modSservice.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
-                                            <a href="db/deleteSservice.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
+                                            <a class="confirmation" href="modSservice.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
+                                            <a  class="confirmation" href="db/deleteSservice.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
                                         </td>
                                     </tr>';
                                     }
