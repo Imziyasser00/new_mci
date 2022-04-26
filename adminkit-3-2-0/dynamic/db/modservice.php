@@ -8,9 +8,17 @@ $ref = $_POST["ref"];
 $id = $_POST["id"];
 
 
-echo $id;
+
+$result = mysqli_query($conn,"SELECT * FROM service WHERE id = ".$id);
+
+$obj =$result->fetch_assoc();
+
+echo $obj["nom"];
+
+rename("../Documents/".$obj["nom"],"../Documents/".$nom);
 
 mysqli_query($conn,"UPDATE `service` SET `nom`='$nom',`ref`='$ref' WHERE id = ".$id);
+
 
 header("Location: ../listeServices.php");
 
