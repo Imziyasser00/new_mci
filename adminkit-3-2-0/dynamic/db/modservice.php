@@ -22,7 +22,7 @@ rename("../Documents/".$obj["nom"],"../Documents/".$nom);
 mysqli_query($conn,"UPDATE `service` SET `nom`='$nom',`ref`='$ref' WHERE id = ".$id);
 
 
-//header("Location: ../listeServices.php");
+header("Location: ../listeService.php");
 
 
 ?>

@@ -25,7 +25,7 @@ include_once("includes/header.php");
                         <div class="card-body">
                             <form action="ListeSservice1.php" method="post">
                                 <select name="ser" class="form-control mb-5" onchange="getDepartements(this.value);"
-                                    required>
+                                     required>
 
                                     <?php
 										

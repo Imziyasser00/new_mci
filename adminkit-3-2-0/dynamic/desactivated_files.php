@@ -43,7 +43,7 @@ include_once("includes/header.php");
                                     <tbody>
                                         <?php   
                                     
-                                    $query = ("SELECT * FROM document where valide = '1'");
+                                    $query = ("SELECT * FROM document where valide = '1' or active_type = '1'");
                                     $result = mysqli_query($conn,$query);
                                     while($obj = $result->fetch_assoc()){
                                         $sql = mysqli_query($conn,"SELECT * FROM sservice WHERE id = ".$obj["id_service"]);

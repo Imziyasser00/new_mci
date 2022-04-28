@@ -23,10 +23,8 @@ include_once("includes/header.php");
                                 <div class="col-md-4 mx-5">
                                     <div class="row d-flex justify-content-end">
                                         <div class="col-md-2 mx-4">
-                                            <a href="addType.php" class="confirmation btn btn-primary">Ajouter</a>
-                                        </div>
-                                        <div class="col-md-2 ">
-                                            <input id="des" type="submit" class="btn btn-danger" value="Desactiver">
+                                            <input id="activeSubmit" type="submit" class="mt-3 btn btn-success"
+                                                value="Activer">
                                         </div>
                                     </div>
 
@@ -34,7 +32,7 @@ include_once("includes/header.php");
 
                             </div>
                         </div>
-                        <form id="desactive_form" action="db/desactivate_type.php" method="post">
+                        <form id="active_form" action="db/activertypes.php" method="post">
                             <div class="card-body">
                                 <div class="form-group">
                                     <!--		Show Numbers Of Rows 		-->
@@ -62,7 +60,7 @@ include_once("includes/header.php");
                                     <tbody>
                                         <?php   
                                     
-                                    $query = ("SELECT * FROM type where valide = '0'");
+                                    $query = ("SELECT * FROM type where valide = '1'");
                                     $result = mysqli_query($conn,$query);
                                     while($obj = $result->fetch_assoc()){
                                         echo '<tr>
@@ -82,21 +80,6 @@ include_once("includes/header.php");
                                 </table>
                             </div>
 
-                            <div class='col-md-12 js-center btn'>
-                                <nav>
-                                    <ul class="pagination">
-                                        <li data-page="prev">
-                                            <span>
-                                                < <span class="sr-only">(current)
-                                            </span></span>
-                                        </li>
-
-                                        <li data-page="next" id="prev">
-                                            <span> > <span class="sr-only active">(current)</span></span>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
                     </div>
                 </div>
             </div>
@@ -108,7 +91,7 @@ include_once("includes/header.php");
     <?php include_once('includes/footer.php');  ?>
 </div>
 </div>
-<script src="js/desactive_type.js"></script>
+<script src="js/active_types.js"></script>
 <script src="js/app.js"></script>
 
 

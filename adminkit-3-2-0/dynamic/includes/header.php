@@ -114,6 +114,9 @@ include_once 'db/checker.php';
                             <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
                                         href="TypeDoc.php"><i class="align-middle"
                                             data-feather="align-justify"></i>Types des documents</a></span></li>
+                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
+                                        href="listeAnnees.php"><i class="align-middle"
+                                            data-feather="align-justify"></i>Liste des Années</a></span></li>
                         </div>
                         <li class="sidebar-link"><i class="align-middle" data-feather="corner-right-down"></i> <span
                                 class="align-middle">Gestion des diffusions</span></li>
