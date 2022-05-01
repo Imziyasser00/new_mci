@@ -10,3 +10,19 @@
 .serv_down{
     display: none;
 }
+
+.file_down{
+    display: none;
+}
+
+
+
+#Doc{
+    display: none;
+}
+
+#sidebar{
+    height: 100%;
+    overflow-y: scroll;
+}
+

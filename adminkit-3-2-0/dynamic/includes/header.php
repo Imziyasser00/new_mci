@@ -29,11 +29,16 @@ include_once 'db/checker.php';
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!--      Scripts       -->
 
 
-
 </head>
+<?php 
+
+include("db/file_system.php");
+
+?>
 
 <body data-theme="dark">
     <div class="wrapper">
@@ -117,10 +122,64 @@ include_once 'db/checker.php';
                             <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
                                         href="listeAnnees.php"><i class="align-middle"
                                             data-feather="align-justify"></i>Liste des Années</a></span></li>
+                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
+                                        href="newDoc.php"><i class="align-middle" data-feather="plus-circle"></i>Nouveau
+                                        document</a></span></li>
                         </div>
-                        <li class="sidebar-link"><i class="align-middle" data-feather="corner-right-down"></i> <span
-                                class="align-middle">Gestion des diffusions</span></li>
+                        <li class="sidebar-link" id="diff_down"><i class="align-middle"
+                                data-feather="corner-right-down"></i> <span class="align-middle">Gestion des
+                                diffusions</span></li>
+                        <div id="dif_down" style="display:none;" class="serv_down">
+                            <li class="sidebar-link"><a class="sidebar-link" href="diffServ.php"><i class="align-middle"
+                                        data-feather="align-justify"></i><span class="align-middle"> Diffusion par
+                                        Service</span></a>
+                            </li>
+                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
+                                        href="DiffDoc.php"><i class="align-middle"
+                                            data-feather="align-justify"></i>Diffusion par Document</a></span></li>
+                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
+                                        href="addDiff.php"><i class="align-middle"
+                                            data-feather="plus-circle"></i>Ajouter
+                                        diffusion</a></span></li>
+                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
+                                        href="delDiff.php"><i class="align-middle"
+                                            data-feather="minus-circle"></i>Annuler
+                                        diffusion</a></span></li>
+                        </div>
                     </ul>
+
+
+                    <li id="doc_top" class="sidebar-item">
+                        <div id="" class="sidebar-link">
+                            <i class="align-middle" data-feather="folder"></i> <span
+                                class="align-middle">Documents</span>
+                        </div>
+
+                    </li>
+
+                    <ul id="Doc" class="doc_down">
+                        <li class="sidebar-link" id="ad_down"><a href="<?php echo $pq_path.$pq_name ?>"
+                                class="sidebar-link"><i class="align-middle" data-feather="file"></i> <span
+                                    class="align-middle">Politique
+                                    QSE</span></a>
+                        </li>
+                        <li class="sidebar-link" id="service_down"><a href="Politique_Qse.php" class="sidebar-link"><i
+                                    class="align-middle" data-feather="file"></i>
+                                <span class="align-middle">Plan d'orientation
+                                    stratégique</span></a>
+                        </li>
+                        <li class="sidebar-link" id="service_down"><a href="<?php echo $mmi_path.$mmi_name ?>"
+                                class="sidebar-link"><i class="align-middle" data-feather="file"></i>
+                                <span class="align-middle">Manuel Management intégré</span></a>
+                        </li>
+                        <li class="sidebar-link" id="file_down"><a href="Doc_liste.php" class="sidebar-link"><i
+                                    class="align-middle" data-feather="align-justify"></i> <span
+                                    class="align-middle">Liste des
+                                    documents</span></a>
+                        </li>
+
+                    </ul>
+
 
 
 

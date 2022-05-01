@@ -40,7 +40,21 @@ $(document).ready(function() {
         $("#doc_down").slideToggle(500);
     });
 });
+$(document).ready(function() {
+    $("#diff_down").click(function() {
+        $("#dif_down").slideToggle(500);
+    });
+});
 </script>
+
+<script>
+$(document).ready(function() {
+    $("#doc_top").click(function() {
+        $("#Doc").slideToggle(500);
+    });
+});
+</script>
+
 
 <script>
 var elems = document.getElementsByClassName('confirmation');
@@ -61,3 +75,5 @@ for (var i = 0, l = files.length; i < l; i++) {
     files[i].addEventListener('click', file_It);
 }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
