@@ -23,7 +23,7 @@ include_once("includes/header.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="Doc_type.php" method="post">
+                            <form action="db/Doc_type.php" method="post">
                                 <select name="type" class="form-control mb-5" required>
 
                                     <?php
@@ -35,7 +35,7 @@ include_once("includes/header.php");
                                          while  ($obj = $res->fetch_assoc()) {
 										$i=$obj['type'];																	
 										$n=$obj['id'];																	
-										echo '<option value="'.$n.'">'.utf8_encode($i).'</option>';
+										echo '<option value="'.$i.'">'.utf8_encode($i).'</option>';
                                             } 
                                         }
                                           ?>
