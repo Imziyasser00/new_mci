@@ -81,7 +81,7 @@ include_once("includes/header.php");
                                             <?php
                                             $query = mysqli_query($conn,"SELECT * FROM service");
                                             while($obj = $query->fetch_assoc()){
-                                                echo '<option value="'.$obj["nom"].'">'.$obj["nom"].'</option>';
+                                                echo '<option value="'.$obj["id"].'">'.$obj["nom"].'</option>';
                                             }
                                             
                                             ?>

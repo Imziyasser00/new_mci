@@ -20,9 +20,7 @@ include_once("includes/header.php");
                                 <div class="col-md-4">
 
                                 </div>
-                                <div class="col-md-1 mt-2 mx-5 ">
-                                    <input id="des" type="submit" class="btn btn-danger" value="Desactiver">
-                                </div>
+
                             </div>
                         </div>
                         <form id="desactive_form" action="db/desactiverDoc.php" method="post">
@@ -30,30 +28,31 @@ include_once("includes/header.php");
                                 <table class="table table-striped table-hover ">
                                     <thead>
                                         <tr>
-                                            <th style="width:15%;">Sous-Service</th>
-                                            <th style="width:25%">Nom</th>
+                                            <th style="width:20%;">Sous-Service</th>
+                                            <th style="width:30%">Nom</th>
                                             <th style="width:10%">Type</th>
                                             <th style="width:10%">Etat</th>
-                                            <th style="width:15%">Date App</th>
-                                            <th style="width:15%">Date Revs</th>
+                                            <th style="width:10%">Date App</th>
+                                            <th style="width:10%">Date Revs</th>
                                             <th style="width:25%">Action</th>
-                                            <th style="width: 15%">Activer</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php   
-                                    
-                                    $query = ("SELECT * FROM document where valide = '0' and active_type = '0'");
+                                    $type = $_GET["type"];
+                                    $service = $_GET["service"];
+                                    $query = ("SELECT * FROM document where valide = '0' and active_type = '0' and type = '$type' and id_service = $service");
                                     $result = mysqli_query($conn,$query);
                                     while($obj = $result->fetch_assoc()){
-                                        $sql = mysqli_query($conn,"SELECT * FROM sservice WHERE id = ".$obj["id_service"]);
-                                        while($service = $sql->fetch_assoc()){
-                                            $name = $service["nom"];
+                                        
+                                        $sql = mysqli_query($conn,"SELECT * FROM service WHERE id = ".$service);
+                                        while($ser = $sql->fetch_assoc()){
+                                            $name = $ser["nom"];
                                         }
                                         echo '<tr>
                                         <td>'.$name.'</td>
                                         <td>'.$obj['nom'].'</td>
-                                        <td>'.$obj['type'].'</td>';
+                                        <td>'.$type.'</td>';
                                         if($obj['Etat'] == "P?rim?") {
                                             echo '<td>Perimé</td>';}
                                             else{
@@ -71,9 +70,8 @@ include_once("includes/header.php");
                                            }
 
                                             echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>
-                                            <a class="confirmation" href="moduser.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
-                                            <a class="confirmation" href="db/deleteUser.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
-                                        </td><td><input class="check-input align-middle mx-3" name="chk[ ]" type="checkbox" value="'.$obj["id"].'"></td>
+                                            
+                                        </td>
                                     </tr>';
                                     }
                                              
