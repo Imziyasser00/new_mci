@@ -142,7 +142,7 @@ include_once("includes/header.php");
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1">
-
+                                        <input type="hidden" name="ann" value="<?php echo $_GET["annee"]; ?>">
                                     </div>
                                     <div class="col-md-9 my-2" id="">
 
