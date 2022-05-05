@@ -86,8 +86,7 @@ include_once("includes/header.php");
 
                                         <label for="Processus">Responsable d'audit
                                         </label>
-                                        <select name="Responsable d'audit" id="Responsable_audit" class="form-control"
-                                            required>
+                                        <select name="Respo" id="Responsable_audit" class="form-control" required>
 
                                             <?php
 																	
@@ -186,7 +185,7 @@ include_once("includes/header.php");
                                         <label for="Date">Date d'application</label>
                                         <?php $today = date("Y-n-j");?>
                                         <input id="Date" class="form-control" type="datetime-local"
-                                            value="<?php echo $today;?>" name="Date">
+                                            value="<?php echo $today;?>" name="from">
                                     </div>
                                     <div class="col-md-1">
 
@@ -195,7 +194,7 @@ include_once("includes/header.php");
                                         <label for="Date">Date d'application</label>
                                         <?php $today = date("Y-n-j");?>
                                         <input id="Date" class="form-control" type="datetime-local"
-                                            value="<?php echo $today;?>" name="Date">
+                                            value="<?php echo $today;?>" name="to">
                                     </div>
                                 </div>
                                 <div class="row">
