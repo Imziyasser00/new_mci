@@ -12,26 +12,35 @@ include_once("includes/header.php");
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h2 class="h2">Ajouter un Sous-Service</h2>
+                            <h2 class="h2">Plan d'audit annuel</h2>
                         </div>
                         <div class="card-body">
-                            <form action="db/transformer.php" method="post" id="myform">
-
+                            <form action="db/transformer2.php" method="post" id="myform">
                                 <div class="row">
                                     <div class="col-md-1">
 
                                     </div>
 
-                                    <div class="col-md-9 my-4   ">
-                                        <label for="Prenom">Annee : </label>
+                                    <div class="col-md-9 my-2">
 
+                                        <label for="Revision">Annee :
+                                        </label>
+                                        <select id="Revision" class="form-select" aria-label="Default select example"
+                                            name="annee">
 
-                                        <?php $today = date("Y");?>
-                                        <input id="Date" class="form-control" type="number" value="<?php echo $today;?>"
-                                            name="Date" min="2016">
-
+                                            <?php
+                                            $sql = mysqli_query($conn,"SELECT Distinct(ann) FROM auditprevu");
+                                            while($data = $sql->fetch_assoc()){
+                                                echo '<option value="'.$data["ann"].'">'.$data["ann"].'</option>';
+                                            }
+                                            
+                                            ?>
+                                        </select>
                                     </div>
+
                                 </div>
+
+
 
 
 
