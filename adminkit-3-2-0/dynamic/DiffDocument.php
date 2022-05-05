@@ -33,6 +33,7 @@ include_once("includes/header.php");
                                         <th style="width:15%">Type</th>
                                         <th style="width:15%;">Service</th>
                                         <th style="width:15%">Sous-Service</th>
+                                        <th style="width: 10%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,6 +75,16 @@ include_once("includes/header.php");
                                         <td>'.$nom_sserv.'</td>';
                                         
                                         echo '
+                                        <td class="table-action"><a ';
+                                        if(file_exists($obj['lien'])){
+                                            echo "href='".$obj["lien"]."' target='_blank'";
+                                        }
+                                        else
+                                        {
+                                            echo "href = '#' class='file_not'";
+                                        }
+
+                                         echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a></td>
                                         
                                         
                                     </tr>';

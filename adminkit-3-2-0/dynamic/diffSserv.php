@@ -31,8 +31,10 @@ include_once("includes/header.php");
                                         <th style="width:15%">Id</th>
                                         <th style="width:15%">Service</th>
                                         <th style="width:15%;">Sous-Service</th>
-                                        <th style="width:25%">Type de Document</th>
-                                        <th style="width:5%">Nom</th>
+                                        <th style="width:10%">Type de Document</th>
+                                        <th style="width:25%">Nom</th>
+                                        <th style="width:5%">Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,6 +73,16 @@ include_once("includes/header.php");
                                         echo '
                                         <td>'.$type.'</td>
                                         <td>'.$nom.'</td>
+                                        <td class="table-action"><a ';
+                                        if(file_exists($obbj['lien'])){
+                                            echo "href='".$obbj["lien"]."' target='_blank'";
+                                        }
+                                        else
+                                        {
+                                            echo "href = '#' class='file_not'";
+                                        }
+
+                                         echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a></td>
                                         
                                     </tr>';
                                     }

@@ -26,6 +26,11 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
+    $("#ad_aud").click(function() {
+        $("#aud_ad_down").slideToggle(500);
+    });
+});
+$(document).ready(function() {
     $("#ad_down").click(function() {
         $("#admin_down").slideToggle(500);
     });
@@ -43,6 +48,24 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#diff_down").click(function() {
         $("#dif_down").slideToggle(500);
+    });
+});
+
+$(document).ready(function() {
+    $("#man_top").click(function() {
+        $("#Man").slideToggle(500);
+    });
+});
+
+$(document).ready(function() {
+    $("#audit_int").click(function() {
+        $("#audit_interne").slideToggle(500);
+    });
+});
+
+$(document).ready(function() {
+    $("#plan_audit").click(function() {
+        $("#plan_ad").slideToggle(500);
     });
 });
 </script>

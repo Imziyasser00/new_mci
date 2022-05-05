@@ -1,6 +1,8 @@
 <?php 
 include_once("includes/header.php");
+
 ?>
+
 
 
 <div class="main">
@@ -31,12 +33,21 @@ include_once("includes/header.php");
                                 </div>
 
                             </div>
+                            <div class="row">
+
+                                <div class="col-md-3 mt-4">
+                                    <input class="form-control" type="text" name="search" placeholder="Search" required
+                                        id="myInput">
+
+                                </div>
+                            </div>
+
                         </div>
                         <form id="active_form" action="db/diff_doc.php" method="post">
                             <div class="card-body">
                                 <input type="hidden" value="<?php echo $_GET["id"]; ?>" name="id_doc">
                                 <input type="hidden" value="<?php echo $_GET["type"]; ?>" name="type">
-                                <table class="table table-striped table-hover ">
+                                <table class="table table-striped table-hover " id="myTable">
                                     <thead>
                                         <tr>
                                             <th style="width:25%;">Service</th>
@@ -77,6 +88,16 @@ include_once("includes/header.php");
     <?php include_once('includes/footer.php');  ?>
 </div>
 </div>
+<script>
+$(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+</script>
 <script src="js/addDiff.js"></script>
 <script src="js/app.js"></script>
 

@@ -1,6 +1,6 @@
 <?php 
 
-include("db/connexion.php");
+include("connexion.php");
 
 $prenom = $_POST["Prenom"];
 $nom = $_POST["nom"];
