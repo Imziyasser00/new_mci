@@ -218,6 +218,10 @@ include("db/file_system.php");
                                         class="align-middle"> Liste des
                                         Audits</span></a>
                             </li>
+                            <li class="sidebar-link"><a class="sidebar-link" href="plan_annee.php"><i
+                                        class="align-middle" data-feather="layout"></i><span class="align-middle"> Plan
+                                        Audit</span></a>
+                            </li>
 
                         </div>
 

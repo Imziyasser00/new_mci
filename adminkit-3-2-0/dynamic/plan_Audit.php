@@ -15,7 +15,7 @@ include_once("includes/header.php");
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6 mt-2">
-                                    <h2 class="h2">Liste des Documents</h2>
+                                    <h2 class="h2">Plan</h2>
                                 </div>
                                 <div class="col-md-4">
 

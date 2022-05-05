@@ -42,7 +42,7 @@ mysqli_query($conn,"INSERT INTO `auditprevu`(`ann`, `numero`, `duree`, `id_servi
 
 echo '<br>'.$from.'<br>';
 
-header("Location: ../plan_Audit.php")
+header("Location: ../liste_audits.php");
 
 
 ?>
