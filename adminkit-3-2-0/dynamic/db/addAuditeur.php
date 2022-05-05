@@ -24,7 +24,7 @@ $checkbox = $_POST['chk'] ;
 for ($i=0; $i<sizeof ($checkbox);$i++) {  
     
     $done .= $checkbox[$i];
-    if(($i == 0) and (sizeof($checkbox) == 2)){
+    if($i < (sizeof($checkbox)-1)){
         $done .= ' || ';
     }
     

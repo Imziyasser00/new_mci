@@ -46,10 +46,16 @@ include_once("includes/header.php");
                                         echo '<tr>
                                         <td>'.$obj["nom"].'</td>
                                         <td>'.$obj["prenom"].'</td>
-                                        <td>'.$obj['fonction'].'</td>
+                                        <td>';
+                                        switch($obj['fonction']){
+                                            case "1" : echo "Responsable d'audit";break;
+                                            case "2" : echo "Auditeur";break;
+                                            case "3" : echo "Observateur";break;
+                                        }
+                                        echo '</td> 
                                         <td>'.$obj['Qualification'].'</td>
                                         <td class="table-action">
-                                            <a class="confirmation" href="modAnnee.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
+                                            <a class="confirmation" href="modAuditeur.php?id='.$obj["id_utilisateur"].'&fonction='.$obj["fonction"].'&qlf='.$obj["Qualification"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
                                             <a  class="confirmation" href="db/deleteSservice.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
                                         </td>
                                     </tr>';

@@ -23,7 +23,7 @@ include_once("includes/header.php");
                                 </div>
 
                                 <div class="col-md-1 mt-2">
-                                    <a href="addAudit.php" class="btn btn-primary">Ajouter</a>
+                                    <a href="annee_selector.php" class="btn btn-primary">Ajouter</a>
                                 </div>
                             </div>
                         </div>
