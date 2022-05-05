@@ -30,25 +30,36 @@ include_once("includes/header.php");
                                 <table class="table table-striped table-hover ">
                                     <thead>
                                         <tr>
-                                            <th style="width:15%;">Sous-Service</th>
-                                            <th style="width:25%">Nom</th>
-                                            <th style="width:10%">Type</th>
-                                            <th style="width:10%">Etat</th>
-                                            <th style="width:15%">Date App</th>
-                                            <th style="width:15%">Date Revs</th>
-                                            <th style="width:25%">Action</th>
-                                            <th style="width: 15%">Activer</th>
+                                            <th style="width:15%;">N°</th>
+                                            <th style="width:25%">Sous Processus</th>
+                                            <th style="width:10%">Date</th>
+                                            <th style="width:10%">Auditeurs</th>
+                                            <th style="width:15%">Durée</th>
+                                            <th style="width:15%">Date effective</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php   
                                     
-                                    $query = ("SELECT * FROM document where valide = '0' and active_type = '0 '");
+                                    $query = ("SELECT * FROM auditprevu where ann = ".$_GET["annee"]);
                                     $result = mysqli_query($conn,$query);
                                     while($obj = $result->fetch_assoc()){
-                                        $sql = mysqli_query($conn,"SELECT * FROM service WHERE id = ".$obj["id_service"]);
-                                        $service = $sql->fetch_assoc();
-                                            $name = $service["nom"];
+                                        
+                                        $num = $obj["numero"];
+
+                                        $duree = $obj["duree"];
+                                        
+                                        $ddatep = $obj["ddatep"];
+                                        
+                                        $fdatep = $obj["fdatep"];
+
+                                        $întervale = "<b> FROM : </b> ".$ddatep."<br><b> TO : </b> ".$fdatep;
+
+                                        $id_sser = $obj["id_sservice"];
+                                        
+                                        $sql = mysqli_query($conn,"select nom from sservice where id=$id_sser");
+                                        $sservice = $sql->fetch_assoc();
+                                        $ssnom=utf8_encode($sservice['nom']);
                                             
                                         
                                         echo '<tr>

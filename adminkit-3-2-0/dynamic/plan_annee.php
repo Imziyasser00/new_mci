@@ -51,8 +51,7 @@ include_once("includes/header.php");
 
                                     </div>
 
-                                    <input type="button" onclick="event.preventDefault(); myValidation();"
-                                        value="validerr" class="btn btn-success mt-4 mb-3" id="sub">
+                                    <input type="submit" value="validerr" class="btn btn-success mt-4 mb-3" id="sub">
 
                                 </div>
                             </form>
