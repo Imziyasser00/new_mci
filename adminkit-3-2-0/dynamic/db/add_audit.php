@@ -42,7 +42,20 @@ mysqli_query($conn,"INSERT INTO `auditprevu`(`ann`, `numero`, `duree`, `id_servi
 
 echo '<br>'.$from.'<br>';
 
-header("Location: ../liste_audits.php");
 
+mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`, `numero_audit`, `fonction`) VALUES ('$Respo','$ann','$num','1')");
+mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`,`numero_audit`, `fonction`) VALUES ('$Auditeur','$ann','$num','2')");
+mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`,`numero_audit`, `fonction`) VALUES ('$observateur','$ann','$num','3')");
+
+$sq = mysqli_query($conn,"SELECT * FROM `plandaudit` WHERE annee = ".$ann);
+
+$row = $sq->num_rows;
+
+if($row == 0 ){
+    mysqli_query($conn,"INSERT INTO `plandaudit`( `annee`, `cop`) VALUES ('$ann','0')");
+}
+
+
+header("Location: ../liste_audits.php");
 
 ?>

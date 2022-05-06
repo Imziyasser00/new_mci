@@ -222,6 +222,11 @@ include("db/file_system.php");
                                         class="align-middle" data-feather="layout"></i><span class="align-middle"> Plan
                                         Audit</span></a>
                             </li>
+                            <li class="sidebar-link"><a class="sidebar-link" href="select_fiche.php"><i
+                                        class="align-middle" data-feather="align-justify"></i><span
+                                        class="align-middle"> Liste des
+                                        fiches audits</span></a>
+                            </li>
 
                         </div>
 

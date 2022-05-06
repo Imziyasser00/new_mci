@@ -330,7 +330,7 @@ function myValidation() {
         var jsvar = this.response;
 
         jsvar = JSON.parse(jsvar);
-        console.log(jsvar[0].type);
+
 
         var d = 0;
 

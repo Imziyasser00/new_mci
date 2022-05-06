@@ -17,11 +17,24 @@ include_once("includes/header.php");
                                 <div class="col-md-6 mt-2">
                                     <h2 class="h2">Liste des Documents</h2>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
 
                                 </div>
-                                <div class="col-md-1 mt-2 mx-5 ">
-                                    <input id="des" type="submit" class="btn btn-danger" value="Desactiver">
+                                <div class="col-md-2 mt-2 mx-4 ">
+                                    <div class="row">
+                                        <?php 
+                                    $query = mysqli_query($conn,"SELECT * FROM plandaudit where annee = ".$_GET["annee"]);
+                                    $res = $query->fetch_assoc();
+                                    if($res["cop"] == '0'){
+                                        
+                                        echo '<a id="des" href="db/plan_confirmed.php?annee='.$_GET["annee"].'"
+                                        class="btn btn-success" >Confirmer le Plan d Audit</a>';
+                                    }else{
+                                        echo '<a id="activ" href="db/plan_desconfirmed.php?annee='.$_GET["annee"].'" class="btn btn-danger">Annuler la confirmation </a><button class="btn btn-success my-2" disabled="">Plan confirmé</button>';
+                                    }
+                                    ?>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -30,10 +43,10 @@ include_once("includes/header.php");
                                 <table class="table table-striped table-hover ">
                                     <thead>
                                         <tr>
-                                            <th style="width:15%;">N°</th>
+                                            <th style="width:10%;">N°</th>
                                             <th style="width:25%">Sous Processus</th>
-                                            <th style="width:10%">Date</th>
-                                            <th style="width:10%">Auditeurs</th>
+                                            <th style="width:15%">Date</th>
+                                            <th style="width:20%">Auditeurs</th>
                                             <th style="width:15%">Durée</th>
                                             <th style="width:15%">Date effective</th>
                                         </tr>
@@ -60,35 +73,35 @@ include_once("includes/header.php");
                                         $sql = mysqli_query($conn,"select nom from sservice where id=$id_sser");
                                         $sservice = $sql->fetch_assoc();
                                         $ssnom=utf8_encode($sservice['nom']);
+                                        
+                                        $auditeur = mysqli_query($conn,'select * from auditeurprevu where auditeurprevu.numero_audit="'.$num.'" order by fonction ASC');
+                                        $a = array();
+                                        while($auditeurs = $auditeur->fetch_assoc()){
+                                            array_push($a,$auditeurs["id_auditeur"]);
+                                        }
+
+                                        $arr = array();
+
+                                        
+                                        foreach($a as $aud){
                                             
+                                            $sql = mysqli_query($conn,"SELECT * FROM auditeur where id = ".$aud);
+                                            $data = $sql->fetch_assoc();
+                                            $name = $data["nom"]." ".$data["prenom"];
+                                            array_push($arr,$name);
+                                        }
+                                        $list = "<b> RP : <b>" .$arr[0] . "<br><b> A : <b>".$arr[1].'<br><b> O : <b>'.$arr[2];
+                                        
                                         
                                         echo '<tr>
-                                        <td>'.$name.'</td>
-                                        <td>'.$obj['nom'].'</td>
-                                        <td>'.$obj['type'].'</td>';
-                                        if($obj['Etat'] == "P?rim?") {
-                                            echo '<td>Perimé</td>';}
-                                            else{
-                                            echo '<td>'.$obj["Etat"].'</td>';
-                                            }
-                                        echo '<td>'.$obj['dateAPP'].'</td>
-                                        <td>'.$obj['DATTREV'].'</td>
-                                        <td class="table-action"><a ';
-                                           if(file_exists($obj['lien'])){
-                                               echo "href='".$obj["lien"]."' target='_blank'";
-                                           }
-                                           else
-                                           {
-                                               echo "href = '#' class='file_not'";
-                                           }
-
-                                            echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>
-                                            <a class="confirmation" href="moduser.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
-                                            <a class="confirmation" href="db/deleteUser.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
-                                        </td><td><input class="check-input align-middle mx-3" name="chk[ ]" type="checkbox" value="'.$obj["id"].'"></td>
-                                    </tr>';
+                                        <td>'.$num.'</td>
+                                        <td>'.$ssnom.'</td>
+                                        <td>'.$întervale.'</td>';
+                                        echo '<td>'.$list.'</td>
+                                        <td>'.$duree.'</td>
+                                        <td>'.$fdatep.'</td>
+                                        ';      
                                     }
-                                             
                                     ?>
 
                                     </tbody>
