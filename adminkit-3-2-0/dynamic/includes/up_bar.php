@@ -1,3 +1,8 @@
+<?php 
+
+include("./db/notification/not_fiche_cree_ou_pas.php");
+
+?>
 <nav class="navbar navbar-expand navbar-light navbar-bg">
     <a class="sidebar-toggle js-sidebar-toggle">
         <i class="hamburger align-self-center"></i>
@@ -9,12 +14,12 @@
                 <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
                     <div class="position-relative">
                         <i class="align-middle" data-feather="bell"></i>
-                        <span class="indicator">4</span>
+                        <span class="indicator"><?php echo $counter; ?></span>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
                     <div class="dropdown-menu-header">
-                        4 New Notifications
+                        <?php echo $counter; ?> New Notifications
                     </div>
                     <div class="list-group">
                         <a href="#" class="list-group-item">
@@ -30,19 +35,24 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="#" class="list-group-item">
+                        <?php  
+                        
+                        
+                        foreach ($num as $arr) {
+                            echo '<a href="cree_fiche.php?num='.$arr.'" class="list-group-item">
                             <div class="row g-0 align-items-center">
                                 <div class="col-2">
                                     <i class="text-warning" data-feather="bell"></i>
                                 </div>
                                 <div class="col-10">
-                                    <div class="text-dark">Lorem ipsum</div>
-                                    <div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate
-                                        hendrerit et.</div>
-                                    <div class="text-muted small mt-1">2h ago</div>
+                                    <div class="text-dark">Fiche d audit</div>
+                                    <div class="text-muted small mt-1">Vous étes responsable d audit N° '.$arr.'</div>
                                 </div>
                             </div>
-                        </a>
+                        </a>';
+                        }
+                        ?>
+
                         <a href="#" class="list-group-item">
                             <div class="row g-0 align-items-center">
                                 <div class="col-2">
