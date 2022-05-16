@@ -25,6 +25,7 @@ include_once("includes/header.php");
                                     <div class="col-md-4">
                                         <label for="Prenom">Responsable d'audit</label>
                                         <?php 
+                                        
                                         $sql = mysqli_query($conn,"SELECT * FROM auditeurprevu WHERE numero_audit = '".$_GET["num"]."' and fonction = 1");
                                         $data = $sql->fetch_assoc();
                                         $query = mysqli_query($conn,"SELECT * FROM auditeur WHERE id = ".$data["id_auditeur"]);

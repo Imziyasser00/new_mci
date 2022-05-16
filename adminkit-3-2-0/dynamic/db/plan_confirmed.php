@@ -8,7 +8,7 @@ mysqli_query($conn,"UPDATE `plandaudit` SET `cop`='1' WHERE annee = $ann");
 
 $confirmaud = mysqli_query($conn,"select numero,id_sservice from auditprevu where  ann=$ann");
 
-while($data = $confirmaud->fetch_assoc()){
+while($data = $confirmaud->fetch_assoc()){  
     $num = $data["numero"];
     $id_sservice = $data['id_sservice'];
     $sservice = mysqli_query($conn,"select nom from sservice where id=$id_sservice");
@@ -25,7 +25,7 @@ while($data = $confirmaud->fetch_assoc()){
     $sel_id = $sel_utilisateur->fetch_assoc();
     $i_ra = $sel_id["id"];
     $mail = $sel_id["mail"];
-    $add_fiche = mysqli_query($conn,"INSERT INTO fichecreeoupas VALUES ('',$ann,'$num',1,$i_ra)");
+    $add_fiche = mysqli_query($conn,"INSERT INTO fichecreeoupas VALUES ('',$ann,'$num',0,$i_ra)");
     $to = $mail;
 	$subject = "Audit ".$num;
     $txt = 'Vous etes responsable d\'audit n° '.$num.' du processus '.$sservice_nom.' <br>veuillez <a href="http://localhost/new_mci/adminkit-3-2-0/dynamic/">vous connecter</a> pour renseigner la fiche d\'audit.
@@ -75,5 +75,5 @@ mail($to,$subject,$txt,$headers);
     
 }
 
-//header("Location: ../plan_audit_annuel.php?annee=".$ann);
+header("Location: ../plan_audit_annuel.php?annee=".$ann);
 ?>

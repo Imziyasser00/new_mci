@@ -36,10 +36,12 @@ include_once("includes/header.php");
                                             $query = mysqli_query($conn,"select numero_audit from auditeurprevu where id_auditeur=".$result["id"]);
                                             while($obj = $query->fetch_assoc()){
                                                 $n=$obj['numero_audit'];
-                                                $query = mysqli_query($conn,"select num from fichecreeoupas where CreeOuPas=1 and num='".$n."'");
+                                                $n = $n;
+                                                $query = mysqli_query($conn,"select * from fichecreeoupas where CreeOuPas=1 and num='1/29'");
+                                                echo '<option value="">'.$obj['numero_audit'].'</option>';
                                                 while($object = $query->fetch_assoc()){
-                                                    echo '<option value="'.$n.'">'.$n.'</option>';
-                                                }
+                                                    echo '<option value="'.$object["annee"].'">'.$n.'</option>';
+                                                }   
                                             }
                                             
                                             ?>

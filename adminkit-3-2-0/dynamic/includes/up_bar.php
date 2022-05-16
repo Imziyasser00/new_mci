@@ -1,7 +1,6 @@
 <?php 
-
 include("./db/notification/not_fiche_cree_ou_pas.php");
-
+include("./db/notification/docEx.php");
 ?>
 <nav class="navbar navbar-expand navbar-light navbar-bg">
     <a class="sidebar-toggle js-sidebar-toggle">
@@ -21,38 +20,51 @@ include("./db/notification/not_fiche_cree_ou_pas.php");
                     <div class="dropdown-menu-header">
                         <?php echo $counter; ?> New Notifications
                     </div>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-danger" data-feather="alert-circle"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-dark">Update completed</div>
-                                    <div class="text-muted small mt-1">Restart server 12 to complete the update.
-                                    </div>
-                                    <div class="text-muted small mt-1">30m ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <?php  
-                        
-                        
-                        foreach ($num as $arr) {
-                            echo '<a href="cree_fiche.php?num='.$arr.'" class="list-group-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-warning" data-feather="bell"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-dark">Fiche d audit</div>
-                                    <div class="text-muted small mt-1">Vous étes responsable d audit N° '.$arr.'</div>
-                                </div>
-                            </div>
-                        </a>';
-                        }
-                        ?>
 
+                    <div class="list-group">
+
+                        <?php  
+                        if(isset($num)){
+                            foreach ($num as $arr) {
+                                echo '<a href="cree_fiche.php?num='.$arr.'" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-warning" data-feather="bell"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-dark">Fiche d audit</div>
+                                        <div class="text-muted small mt-1">Vous étes responsable d audit N° '.$arr.'</div>
+                                    </div>
+                                </div>
+                            </a>';
+                            }
+                        }
+                        
+                        
+                        ?>
+                        <?php  
+                        if(isset($doc)){
+                            foreach ($doc as $arr) {
+                                echo ' <a href="" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-danger" data-feather="alert-circle"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-dark">Document Expiré</div>
+                                        <div class="text-muted small mt-1">le document '.$arr['nom'].'est expiré
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>';
+                            }
+                        
+                        
+                        }
+                            
+                        ?>
+                        <!--
                         <a href="#" class="list-group-item">
                             <div class="row g-0 align-items-center">
                                 <div class="col-2">
@@ -76,11 +88,11 @@ include("./db/notification/not_fiche_cree_ou_pas.php");
                                 </div>
                             </div>
                         </a>
+                    </div>-->
+                        <div class="dropdown-menu-footer">
+                            <a href="all_notifications.php" class="text-muted">Show all notifications</a>
+                        </div>
                     </div>
-                    <div class="dropdown-menu-footer">
-                        <a href="#" class="text-muted">Show all notifications</a>
-                    </div>
-                </div>
             </li>
 
             <li class="nav-item dropdown">
@@ -90,7 +102,7 @@ include("./db/notification/not_fiche_cree_ou_pas.php");
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
                     <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
-                    <span class="text-dark">Charles Hall</span>
+                    <span class="text-dark"><?php echo $_SESSION["nom"]." ".$_SESSION["prenom"]; ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"

@@ -120,11 +120,16 @@ include_once("includes/header.php");
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1">
 
+                                    <div class="row col-md-12">
+                                        <div class="col-md-1"></div>
+                                        <input type="submit" value="Back" class="btn btn-danger mt-5 mb-3 col-md-4">
+                                        <div class="col-md-1"></div>
+                                        <input type="submit" value="Valider" name="Valider"
+                                            class="btn btn-success mt-5 mb-3 col-md-4">
+                                        <div class="col-md-1"></div>
                                     </div>
 
-                                    <input type="submit" value="valider" class="btn btn-success mt-4 mb-3">
 
                                 </div>
                             </form>
