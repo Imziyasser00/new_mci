@@ -104,7 +104,7 @@ include_once("includes/header.php");
                                         $result = mysqli_query($conn,"SELECT * FROM audit_type");
                                         while($obj = $result->fetch_assoc()){
 
-                                            echo '<input class="check-input align-middle mx-3" name="chk[ ]" type="checkbox"
+                                            echo '<input class="check-input align-middle mx-3" name="chk[]" type="checkbox"
                                             value="'.$obj["type"].'"';
                                             if(in_array($obj["type"],$split)) echo "checked";
                                             echo '>'.$obj["type"];

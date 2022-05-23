@@ -97,7 +97,7 @@ include_once("includes/header.php");
                                         <div class="cold-md-9">
                                             <select multiple placeholder="Native Select" data-search="false"
                                                 data-silent-initial-value-set="true" id="example-select"
-                                                name="presence[]">
+                                                name="presenceClo[]">
                                                 <?php
 													
 													$req1="select * from utilisateur order by nom";

@@ -10,39 +10,39 @@ $targetfolder = "../Documents/test/";
 */
 
 
-$Etat = $_POST["Etat"];
-$Service = $_POST["Ser"];
-$DateApp_1 = $_POST["Date"];
-$Revs = $_POST["Revs"];
-$Assoc = $_POST["DocAss"];
-$Type = $_POST["Type"];
-
-$service_id = $_POST["Ser"];
-
-
-//$time_input =  $time_input->format('Y-m-d');
-
+ $Etat = $_POST["Etat"];
+ $Service = $_POST["Ser"];
+ $DateApp_1 = $_POST["Date"];
+ $Revs = $_POST["Revs"];
+ $Type = $_POST["Type"];
+ $service_id = $_POST["Ser"];
+ 
+ 
+ //$time_input =  $time_input->format('Y-m-d');
+ 
 $sqll = mysqli_query($conn,"SELECT * FROM service where id = $Service");
-$data = $sqll->fetch_assoc();
-$Service_nom = $data["nom"];
+ $data = $sqll->fetch_assoc();
+ $Service_nom = $data["nom"];
 
-$DateApp =  new DateTime($DateApp_1);
+$DateApp =  new DateTime($DateApp_1); 
 
 
-$DateRev = $DateApp;
+ $DateRev = $DateApp;
 
 $DateRev->modify('+'.$Revs.'year');
 
-$result = $DateRev->format('Y-m-d');
+ $DateRev = $DateRev->format('Y-m-d');
 
 
 
-$targetfolder = "../Documents/$Service_nom/$Type/";
-$link = "./Documents/$Service_nom/$Type/". basename( $_FILES['file']['name']) ;
 
-$file_name = basename( $_FILES['file']['name']) ;
+ $targetfolder = "../Documents/$Service_nom/$Type/";
+ $link = "./Documents/$Service_nom/$Type/". basename( $_FILES['file']['name']) ;
 
-$targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
+echo $file_name = basename( $_FILES['file']['name']) ;
+$file_name = trim($file_name, '.pdf');
+
+ $targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
 
 // echo basename( $_FILES['file']['name']);
 
@@ -63,10 +63,22 @@ echo "Problem uploading file";
 }
 
 
-if(mysqli_query($conn,"INSERT INTO `document`(`id_service`, `nom`, `type`, `filetype`, `lien`, `Etat`, `dateAPP`, `DATTREV`, `ajtpar`, `valide`, `active_type`, `annee_id`) VALUES ('$service_id','$file_name','$Type','pdf','$link','$Etat','$DateApp_1','$result','".$_SESSION["adp"]."','0','0','$Revs')")){
+mysqli_query($conn,"INSERT INTO `document`(`id_service`, `nom` , `type`, `filetype`, `lien`,`Etat`, `dateAPP`, `DATTREV`, `ajtpar`, `valide`, `active_type`, `annee_id`) VALUES ('$Service','$file_name','$Type','pdf','".utf8_encode($link)."','$Etat','$DateApp_1','$DateRev','5','0','0','5')");
 
     echo "lol";
-    echo $service_id.','.$file_name.','.$Type.',pdf,'.$link.','.$Etat.','.$DateApp_1.','.$result.','.$_SESSION["adp"].',0,1,'.$Revs;
+   
+
+$con = mysqli_query($conn,"SELECT * FROM document order by id DESC LIMIT 1");
+$ff = $con->fetch_assoc();
+$id_doc =  $ff["id"];
+$id_doc++;
+ $id_doc;
+$doc = $_POST["doc_ass"];
+$doc=explode(",",$doc[0]);
+foreach($doc as $ele){
+    mysqli_query($conn,"INSERT INTO `liaison`(`id_doc`, `id_anx`) VALUES ('$id_doc','$ele')");
 }
+
+
 
 ?>

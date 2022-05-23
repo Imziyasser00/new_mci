@@ -27,6 +27,7 @@ if(isset($_POST["chk"])){
 
     $checkbox = $_POST['chk'] ; 
     
+    
     for ($i=0; $i<sizeof ($checkbox);$i++) {  
         
         $done .= $checkbox[$i];
@@ -45,7 +46,7 @@ echo $fonction;
 echo $done;
 echo $name;
 
-mysqli_query($conn,"UPDATE `auditeur` SET `nom`='$nom',`prenom`='$prenom',`fonction`='$fonction',`Qualification`='$done',`id_utilisateur`='$name' WHERE id = ".$id);
+mysqli_query($conn,"UPDATE `auditeur` SET `nom`='$nom',`prenom`='$prenom',`fonction`='$fonction',`Qualification`='$done'WHERE `id_utilisateur`='$id'");
 
 header("Location: ../liste_auditeur.php");
 

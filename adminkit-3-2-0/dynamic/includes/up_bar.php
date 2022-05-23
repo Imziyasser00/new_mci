@@ -64,18 +64,27 @@ include("./db/notification/docEx.php");
                         }
                             
                         ?>
-                        <!--
-                        <a href="#" class="list-group-item">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-2">
-                                    <i class="text-primary" data-feather="home"></i>
+                        <?php  
+                        if(isset($reminder)){
+                            foreach ($reminder as $arr) {
+                                echo ' <a href="#" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-primary" data-feather="alert-octagon"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-dark">'.$arr["nom"].'</div>
+                                    </div>
                                 </div>
-                                <div class="col-10">
-                                    <div class="text-dark">Login from 192.186.1.8</div>
-                                    <div class="text-muted small mt-1">5h ago</div>
-                                </div>
-                            </div>
-                        </a>
+                            </a>';
+                            }
+                        
+                        
+                        }
+                            
+                        ?>
+
+
                         <a href="#" class="list-group-item">
                             <div class="row g-0 align-items-center">
                                 <div class="col-2">
@@ -88,11 +97,11 @@ include("./db/notification/docEx.php");
                                 </div>
                             </div>
                         </a>
-                    </div>-->
-                        <div class="dropdown-menu-footer">
-                            <a href="all_notifications.php" class="text-muted">Show all notifications</a>
-                        </div>
                     </div>
+                    <div class="dropdown-menu-footer">
+                        <a href="all_notifications.php" class="text-muted">Show all notifications</a>
+                    </div>
+                </div>
             </li>
 
             <li class="nav-item dropdown">
@@ -111,8 +120,9 @@ include("./db/notification/docEx.php");
                             data-feather="pie-chart"></i>
                         Analytics</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i>
-                        Settings & Privacy</a>
+                    <a class="dropdown-item" href="change_password.php"><i class="align-middle me-1"
+                            data-feather="settings"></i>
+                        modifier mot de passe</a>
                     <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>
                         Help Center</a>
                     <div class="dropdown-divider"></div>

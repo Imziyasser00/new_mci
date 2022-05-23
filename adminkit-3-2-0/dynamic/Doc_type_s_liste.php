@@ -34,7 +34,7 @@ include_once("includes/header.php");
                                             <th style="width:10%">Etat</th>
                                             <th style="width:10%">Date App</th>
                                             <th style="width:10%">Date Revs</th>
-                                            <th style="width:25%">Action</th>
+                                            <th style="width:30%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,8 +69,13 @@ include_once("includes/header.php");
                                                echo "href = '#' class='file_not'";
                                            }
 
-                                            echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>
-                                            
+                                            echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>';
+                                            $req = mysqli_query($conn,"SELECT * FROM liaison where id_doc = ".$obj["id"]);
+                                            $row = mysqli_num_rows($req);
+                                            if($row != 0){
+                                                echo '<a href = "assoc.php?id='.$obj["id"].'" class="confirmation" style="padding : 10px;"><i class="align-middle feather feather-trash align-middle" data-feather="link"></i></a>';
+                                            }
+                                            echo '
                                         </td>
                                     </tr>';
                                     }

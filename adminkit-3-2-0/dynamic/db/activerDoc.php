@@ -7,7 +7,7 @@ if(isset($_POST["chk"])){
 
 for ($i=0; $i<sizeof ($checkbox);$i++) {  
     echo $checkbox[$i];
-    $query="UPDATE `document` SET `valide`='0' WHERE  id = ".$checkbox[$i];  
+    $query="UPDATE `document` SET `valide`='0' WHERE id = $checkbox[$i]";  
     mysqli_query($conn,$query);
     
     }  

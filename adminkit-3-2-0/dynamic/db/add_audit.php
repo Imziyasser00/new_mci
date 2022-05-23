@@ -45,7 +45,10 @@ echo '<br>'.$from.'<br>';
 
 mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`, `numero_audit`, `fonction`) VALUES ('$Respo','$ann','$num','1')");
 mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`,`numero_audit`, `fonction`) VALUES ('$Auditeur','$ann','$num','2')");
-mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`,`numero_audit`, `fonction`) VALUES ('$observateur','$ann','$num','3')");
+foreach($observateur as $arr){
+    mysqli_query($conn,"INSERT INTO `auditeurprevu`(`id_auditeur`,`ann`,`numero_audit`, `fonction`) VALUES ('$arr','$ann','$num','3')");
+}
+
 
 $sq = mysqli_query($conn,"SELECT * FROM `plandaudit` WHERE annee = ".$ann);
 
@@ -54,6 +57,7 @@ $row = $sq->num_rows;
 if($row == 0 ){
     mysqli_query($conn,"INSERT INTO `plandaudit`( `annee`, `cop`) VALUES ('$ann','0')");
 }
+mysqli_query($conn,"INSERT INTO `fichecreeoupas`(`annee`, `num`, `CreeOuPas`, `i_RA`) VALUES ('$ann','$ann','0','$Respo')");
 
 
 header("Location: ../liste_audits.php");

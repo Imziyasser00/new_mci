@@ -6,7 +6,6 @@ include_once("includes/header.php");
 <div class="main">
     <?php include_once 'includes/up_bar.php'; ?>
 
-
     <main class="content">
         <div class="container-fluid p-0">
             <div class="row">
@@ -89,41 +88,14 @@ include_once("includes/header.php");
                                     </div>
 
 
-                                    <div class="col-md-9 my-2">
-                                        <label for="Processus"> Présence souhaitée :
-                                        </label>
-                                        <input type="hidden" name="num" value="<?php echo $_GET["num"] ?>">
 
-                                        <div class="cold-md-9">
-                                            <select multiple placeholder="Native Select" data-search="false"
-                                                data-silent-initial-value-set="true" id="example-select"
-                                                name="presence[]">
-                                                <?php
-													
-													$req1="select * from utilisateur order by nom";
-                                                    $res = mysqli_query($conn,$req1);
-													$nbr = mysqli_num_rows($res);
-													if($nbr!=0){
-														
-                                                        while  ($obj = $res->fetch_assoc()) 
-                                                        {
-													$nom=$obj['nom'];																	
-													$prenom=$obj['prenom'];																	
-													$n=$obj['id'];																	
-													echo '<option value="'.$n.'">'.utf8_encode($nom." ".$prenom).'</option>';
-																	
-                                                                    
-                                              } }
-                                          ?>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="row col-md-12">
                                         <div class="col-md-1"></div>
-                                        <input type="submit" value="Back" class="btn btn-danger mt-5 mb-3 col-md-4">
+                                        <input type="submit" value="Back" name="back"
+                                            class="btn btn-danger mt-5 mb-3 col-md-4">
                                         <div class="col-md-1"></div>
                                         <input type="submit" value="Valider" name="Valider"
                                             class="btn btn-success mt-5 mb-3 col-md-4">

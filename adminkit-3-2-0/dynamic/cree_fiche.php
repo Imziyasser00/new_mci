@@ -5,6 +5,7 @@ include_once("includes/header.php");
 
 <div class="main">
     <?php include_once 'includes/up_bar.php'; ?>
+    <?php include_once './db/add_fiche1_back.php'; ?>
 
 
     <main class="content">
@@ -63,10 +64,21 @@ include_once("includes/header.php");
 
                                         <label for="identifiant">Date de l’audit :</label>
                                         <?php $today = date("Y-n-j");?>
-                                        <input id="Date" class="form-control" type="datetime-local"
-                                            value="<?php echo $today;?>" name="date">
+                                        <input id="Date" class="form-control" type="datetime-local" value="<?php 
+                                            if(isset($arr)){
+                                                echo $arr[6];
+                                            } else{
+                                                echo $today;
+                                            }
+                                            ?>" name="date" required>
                                     </div>
                                 </div>
+                                <?php 
+                                    if(isset($arr)){
+                                        echo "<input type='hidden' name='bk' value='bk'>";
+                                    }
+
+?>
 
                                 <div class="row">
                                     <div class="col-md-1">
@@ -76,7 +88,8 @@ include_once("includes/header.php");
 
                                         <label for="password">Lieu</label>
                                         <input class="form-control" type="text" id="password" name="lieu"
-                                            placeholder="Lieu" required>
+                                            placeholder="Lieu" <?php if(isset($arr)) echo "value='$arr[0]'"; ?>
+                                            required>
 
                                     </div>
                                 </div>
@@ -89,7 +102,8 @@ include_once("includes/header.php");
 
                                         <label for="fonction">Objectif de l'audit :</label>
                                         <input class="form-control" type="text" id="fonction" name="objectif"
-                                            placeholder="Objectif de l'audit :" required>
+                                            placeholder="Objectif de l'audit :"
+                                            <?php if(isset($arr)) echo "value='$arr[1]'"; ?> required>
 
                                     </div>
                                 </div>
@@ -100,8 +114,8 @@ include_once("includes/header.php");
                                     <div class="col-md-9 my-2">
 
                                         <label for="mail">Identification des documents de références :</label>
-                                        <input class="form-control" type="text" id="mail" name="ident" placeholder=""
-                                            required>
+                                        <input class="form-control" type="text" id="mail" name="ident"
+                                            <?php if(isset($arr)) echo "value='$arr[2]'"; ?> required>
 
                                     </div>
                                 </div>
@@ -127,7 +141,13 @@ include_once("includes/header.php");
 													$nom=$obj['nom'];																	
 													$prenom=$obj['prenom'];																	
 													$n=$obj['id'];																	
-													echo '<option value="'.$n.'">'.utf8_encode($nom." ".$prenom).'</option>';
+													echo '<option value="'.$n;'"';
+                                                    if(isset($arr)){
+                                                        if($n == $arr[3]){
+                                                            echo 'selected ';
+                                                        }
+                                                    }
+                                                    echo '>'.utf8_encode($nom." ".$prenom).'</option>';
 																	
                                                                     
                                               } }
@@ -162,7 +182,16 @@ include_once("includes/header.php");
 													$nom=$obj['nom'];																	
 													$prenom=$obj['prenom'];																	
 													$n=$obj['id'];																	
-													echo '<option value="'.$n.'">'.utf8_encode($nom." ".$prenom).'</option>';
+													echo '<option value="'.$n.'"';
+                                                    if(isset($arr)){
+                                                        foreach($arr[4] as $element){
+                                                            if($n == $element){
+                                                                echo " selected";
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
+                                                    echo '>'.utf8_encode($nom." ".$prenom).'</option>';
 																	
                                                                     
                                               } }

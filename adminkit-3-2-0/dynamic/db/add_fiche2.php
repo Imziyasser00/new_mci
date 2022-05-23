@@ -7,21 +7,21 @@ if(isset($_POST{"Valider"})){
     echo $heure = $_POST["heure"];
     
     
-    print_r($presence = $_POST["presence"]);
+    print_r($presence = $_POST["presenceClo"]);
     print_r($presence=explode(",",$presence[0]));
      $num = $_POST["num"];
      
-     print_r($audite);
-     mysqli_query($conn,"INSERT INTO `reunionouverture`(`date`, `time`, `numero`) VALUES ('$date','$heure','$num')");
-     foreach($audite as $element){
-         mysqli_query($conn,"INSERT INTO `presenceouverture`( `num_audit`, `id_utilisateur`) VALUES ('$num','$element')");
+     print_r($presence);
+     mysqli_query($conn,"INSERT INTO `reunioncloture`(`date`, `time`, `numero`) VALUES ('$date','$heure','$num')");
+     foreach($presence as $element){
+         mysqli_query($conn,"INSERT INTO `presencecloture`( `num_audit`, `id_utilisateur`) VALUES ('$num','$element')");
         }
         mysqli_query($conn,"UPDATE fichecreeoupas  SET CreeOuPas = 1  where num='$num'");
         
         header("Location: ../add_fiche.php?num=$num");
         
     }else{
-        $num = $_POST["num"];
+        $num = $_GET["num"];
         mysqli_query($conn,"DELETE * FROM  `reunionouverture`WHERE numero = $num");
         
         mysqli_query($conn,"DELETE * FROM  `presenceouverture`WHERE num_audit = $num");

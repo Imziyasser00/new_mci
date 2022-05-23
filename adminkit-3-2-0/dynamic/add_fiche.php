@@ -133,10 +133,14 @@ include_once("includes/header.php");
                                         <div class="item10 center">26/02/2013</div>
                                         <div class="item11 left" style="padding-left: 10px;">Date de l'audit :
                                             <?php 
-                                            $result = mysqli_query($conn,"SELECT * FROM `fichdaudit` WHERE audit_num = '$num'");
-                                            $object = $result->fetch_assoc();
-                                            echo $object["date"];
-                                            $idr = $object["idr"];
+                                            $connexion = new PDO('mysql:host=localhost;dbname=mci', 'root', '');
+                                            $selectall=$connexion->prepare("select date  , idr from fichdaudit where audit_num like ?");
+		                                    $selectall->execute(array($num));
+		                                    $objt = $selectall->Fetch(PDO::FETCH_ASSOC);
+		                                    echo $date = $objt['date'];
+
+                                            
+                                            $idr = $objt["idr"];
                                             ?></div>
                                         <div class="item12 left" style="padding-left: 10px;">Responsable d'audit :
                                             <?php 
@@ -191,15 +195,20 @@ include_once("includes/header.php");
                                             }
                                             echo $list2;
                                             ?>
-
-                                            Visa : <br></div>
+                                            <br>
+                                            Visa : <br>
+                                        </div>
                                         <div class="item15" style="padding: 20px;"> Audités :
                                             <?php 
-                                            $result = mysqli_query($conn,"select id, id_utilisateur ,num_audit  from auditee where num_audit='".$num."' order by id");
+                                            $selectall=$connexion->prepare("select id, id_utilisateur ,num_audit  from auditee where num_audit like ? order by id");
+		                                    $selectall->execute(array($num));
+		                                    
+                                            
                                             $list3='';
-                                            while($auditees1 = $result->fetch_assoc()){
+                                            while($auditees1 = $selectall->Fetch(PDO::FETCH_ASSOC)){
                                                 $auditees['id_utilisateur']=$auditees1['id_utilisateur'];
-                                                $r3=$auditees['id_utilisateur'];    
+                                                $r3=$auditees['id_utilisateur'];  
+                                                  
                                                 $sql = mysqli_query($conn,"select nom,prenom from utilisateur where id=$r3");
                                                 $auditeeselect = $sql->fetch_assoc();
                                                 $audites['nom']=$auditeeselect['nom'];
@@ -234,7 +243,7 @@ include_once("includes/header.php");
                                         <div class="item17" style="padding: 20px;"> Présence souhaitée de :
                                             <?php 
                                             $result = mysqli_query($conn,"select id, id_utilisateur ,num_audit  from presenceouverture where presenceouverture.num_audit='".$num."' order by id");
-                                            $list4='';
+                                            $list5='';
                                             while($souhaites = $result->fetch_assoc()){
                                                 $souhaite['id_utilisateur']=$souhaites['id_utilisateur'];
 								                 $r6=$souhaite['id_utilisateur'];								
@@ -243,9 +252,9 @@ include_once("includes/header.php");
 								        		$souhaitessss['nom']=$souhaitess['nom'];
 								        		$souhaitessss['prenom']=$souhaitess['prenom'];
 								        		$souhaitessss['complet']=$souhaitess['nom'].' '.$souhaitess['prenom'];
-								        		$list6.='<br>&nbsp;'.$souhaitessss['complet'].'  ';
+								        		$list5.='<br>&nbsp;'.$souhaitessss['complet'].'  ';
                                             }
-                                            echo $list3;
+                                            echo $list5;
                                             ?>
 
 
@@ -269,7 +278,7 @@ include_once("includes/header.php");
                                         </div>
                                         <div class="item17" style="padding: 20px;"> Présence souhaitée de :
                                             <?php 
-                                            $result = mysqli_query($conn,"select id, id_utilisateur ,num_audit  from presenceouverture where presenceouverture.num_audit='".$num."' order by id");
+                                            $result = mysqli_query($conn,"select id, id_utilisateur ,num_audit  from presencecloture where presencecloture.num_audit='".$num."' order by id");
                                             $list4='';
                                             while($souhaites = $result->fetch_assoc()){
                                                 $souhaite['id_utilisateur']=$souhaites['id_utilisateur'];
@@ -279,9 +288,9 @@ include_once("includes/header.php");
 								        		$souhaitessss['nom']=$souhaitess['nom'];
 								        		$souhaitessss['prenom']=$souhaitess['prenom'];
 								        		$souhaitessss['complet']=$souhaitess['nom'].' '.$souhaitess['prenom'];
-								        		$list6.='<br>&nbsp;'.$souhaitessss['complet'].'  ';
+								        		$list4.='<br>&nbsp;'.$souhaitessss['complet'].'  ';
                                             }
-                                            echo $list3;
+                                            echo $list4;
                                             ?>
 
 

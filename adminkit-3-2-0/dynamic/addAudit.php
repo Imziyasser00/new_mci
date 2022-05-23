@@ -148,78 +148,83 @@ include_once("includes/header.php");
 
                                         <label for="Processus">Observateur
 
-                                        </label>
-                                        <select name="observateur" id="observateur" class="form-control" required>
+                                        </label><i class="align-middle ml-3" color="green" data-feather="plus-square"
+                                            style="cursor: pointer;" id="obser"></i><i class="align-middle ml-3"
+                                            color="red" data-feather="minus-square" style="cursor: pointer;"
+                                            id="obser-m"></i>
 
-                                            <?php
-																	
-												$req1="select * from auditeur";
-                                                $res = mysqli_query($conn,$req1);
-												
-												
-													
-                                                    while  ($obj = $res->fetch_assoc()) 
-                                                    {
-												$i=$obj['nom'];																	
-												$j=$obj['prenom'];																	
-												$n=$obj['id'];																	
-												echo '<option value="'.$n.'">'.utf8_encode($i).' '.utf8_encode($j).'</option>';
-												
-                                                
-                                            } 
-                                          ?>
-                                        </select>
+                                        <dic class="row">
+                                            <select name="observateur[]" id="observateur" class="form-control" required>
 
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-md-4">
+                                                <?php                  
+                                                        $req1="select * from auditeur";
+                                                        $res = mysqli_query($conn,$req1);                               
+                                                            while  ($obj = $res->fetch_assoc()) 
+                                                            {
+                                                        $i=$obj['nom'];																	
+                                                        $j=$obj['prenom'];																	
+                                                        $n=$obj['id'];																	
+                                                        echo '<option value="'.$n.'">'.utf8_encode($i).' '.utf8_encode($j).'</option>';              
+                                                    } 
+                                                    ?>
+                                            </select>
+
+                                        </dic>
+
 
                                     </div>
-                                    Choisir un interval de temps .
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-4 my-2">
-                                        <label for="Date">Date d'application</label>
-                                        <?php $today = date("Y-n-j");?>
-                                        <input id="Date" class="form-control" type="datetime-local"
-                                            value="<?php echo $today;?>" name="from">
-                                    </div>
-                                    <div class="col-md-1">
-
-                                    </div>
-                                    <div class="col-md-4 my-2">
-                                        <label for="Date">Date d'application</label>
-                                        <?php $today = date("Y-n-j");?>
-                                        <input id="Date" class="form-control" type="datetime-local"
-                                            value="<?php echo $today;?>" name="to">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-1">
-
-                                    </div>
-                                    <div class="col-md-5 my-4">
-                                        <label for="duration">Dureation : </label>
-                                        <input type="hidden" name="example4"
-                                            style="width: 20px; padding : 20px; height:20px;" />
+                                    <div id="obserr">
 
                                     </div>
 
-                                </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-4">
 
+                                        </div>
+                                        Choisir un interval de temps .
+                                    </div>
 
-                                <div class="row">
-                                    <div class="col-md-1">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-4 my-2">
+                                            <label for="Date">Date d'application</label>
+                                            <?php $today = date("Y-n-j");?>
+                                            <input id="Date" class="form-control" type="datetime-local"
+                                                value="<?php echo $today;?>" name="from">
+                                        </div>
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        <div class="col-md-4 my-2">
+                                            <label for="Date">Date d'application</label>
+                                            <?php $today = date("Y-n-j");?>
+                                            <input id="Date" class="form-control" type="datetime-local"
+                                                value="<?php echo $today;?>" name="to">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        <div class="col-md-5 my-4">
+                                            <label for="duration">Dureation : </label>
+                                            <input type="hidden" name="example4"
+                                                style="width: 20px; padding : 20px; height:20px;" />
+
+                                        </div>
 
                                     </div>
 
-                                    <input type="button" onclick="event.preventDefault(); myValidation();"
-                                        value="valider" class="btn btn-success mt-4 mb-3">
 
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+
+                                        </div>
+
+                                        <input type="button" onclick="event.preventDefault(); myValidation();"
+                                            value="valider" class="btn btn-success mt-4 mb-3">
+
+                                    </div>
                             </form>
                         </div>
                     </div>
@@ -318,6 +323,7 @@ function myValidation() {
     console.log(Aud);
     if ((observateur == Respo) || (observateur == Aud) || (Aud == Respo)) {
         alert("Un auditeur ne peut pas faire deux  fonctions dans le meme audit");
+        return false;
     }
     var xhr = new XMLHttpRequest();
 
@@ -385,6 +391,18 @@ function myValidation() {
 
 
 }
+</script>
+
+<script>
+$(document).ready(function() {
+    $("#obser").on("click", function(e) {
+        $('<div class="row" id="obss"> <div class = "col-md-1" ><input type = "hidden" name = "ann" value = "<?php echo $_GET["annee"]; ?>" > </div> <div class = "col-md-9 my-2"> <label for = "Processus" > Observateur </label><i class="align-middle ml-3" color="green" data-feather="plus-square" style="cursor: pointer;" id="obser"></i><div class = "row"> <select name = "observateur[]" id = "observateur" class = "form-control" required> <?php $req1="select * from auditeur";$res = mysqli_query($conn,$req1);while  ($obj = $res->fetch_assoc()) {$i=$obj['nom'];$j=$obj['prenom'];echo '<option value="'.$n.'">'.utf8_encode($i).' '.utf8_encode($j).'</option>'; } ?> </select ></div> </div> </div>')
+            .appendTo("#obserr");
+    })
+    $("#obser-m").on("click", function(e) {
+        $("#obserr").children("div[id=obss]:last").remove();
+    });
+})
 </script>
 
 </body>

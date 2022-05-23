@@ -201,7 +201,7 @@ include("db/file_system.php");
                         class="sidebar-item <?php echo (basename($_SERVER['PHP_SELF'])=="listeUsers.php"||"")?"active":""; ?>">
                         <div id="" class="sidebar-link">
                             <i class="align-middle" data-feather="settings"></i> <span
-                                class="align-middle">Administration</span>
+                                class="align-middle">Management</span>
                         </div>
 
                     </li>
@@ -234,60 +234,7 @@ include("db/file_system.php");
                         </div>
 
 
-                        <li class="sidebar-link" id="service_down"><i class="align-middle"
-                                data-feather="corner-right-down"></i> <span class="align-middle">Gestion des
-                                service</span></li>
-                        <div id="serv_down" style="display:none;" class="serv_down">
-                            <li class="sidebar-link"><a class="sidebar-link" href="listeServices.php"><i
-                                        class="align-middle" data-feather="align-justify"></i><span
-                                        class="align-middle"> Liste des
-                                        services</span></a>
-                            </li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="ListeSservice.php"><i class="align-middle"
-                                            data-feather="align-justify"></i>Liste
-                                        des
-                                        sous-services</a></span></li>
-                        </div>
-                        <li class="sidebar-link" id="document_down"><i class="align-middle"
-                                data-feather="corner-right-down"></i> <span class="align-middle">Gestion des
-                                documents</span></li>
-                        <div id="doc_down" style="display:none;" class="serv_down">
-                            <li class="sidebar-link"><a class="sidebar-link" href="listeDocuments.php"><i
-                                        class="align-middle" data-feather="align-justify"></i><span
-                                        class="align-middle"> Liste des
-                                        Document</span></a>
-                            </li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="TypeDoc.php"><i class="align-middle"
-                                            data-feather="align-justify"></i>Types des documents</a></span></li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="listeAnnees.php"><i class="align-middle"
-                                            data-feather="align-justify"></i>Liste des Années</a></span></li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="newDoc.php"><i class="align-middle" data-feather="plus-circle"></i>Nouveau
-                                        document</a></span></li>
-                        </div>
-                        <li class="sidebar-link" id="diff_down"><i class="align-middle"
-                                data-feather="corner-right-down"></i> <span class="align-middle">Gestion des
-                                diffusions</span></li>
-                        <div id="dif_down" style="display:none;" class="serv_down">
-                            <li class="sidebar-link"><a class="sidebar-link" href="diffServ.php"><i class="align-middle"
-                                        data-feather="align-justify"></i><span class="align-middle"> Diffusion par
-                                        Service</span></a>
-                            </li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="DiffDoc.php"><i class="align-middle"
-                                            data-feather="align-justify"></i>Diffusion par Document</a></span></li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="addDiff.php"><i class="align-middle"
-                                            data-feather="plus-circle"></i>Ajouter
-                                        diffusion</a></span></li>
-                            <li class="sidebar-link"><span class="align-middle"><a class="sidebar-link"
-                                        href="delDiff.php"><i class="align-middle"
-                                            data-feather="minus-circle"></i>Annuler
-                                        diffusion</a></span></li>
-                        </div>
+
                     </ul>
 
 
