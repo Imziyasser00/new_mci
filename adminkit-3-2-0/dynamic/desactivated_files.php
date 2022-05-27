@@ -73,7 +73,7 @@ include_once("includes/header.php");
                                             echo '><i class="align-middle feather feather-trash align-middle" data-feather="eye"></i></a>
                                             <a class="confirmation" href="moduser.php?id='.$obj["id"].'"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
                                             <a class="confirmation" href="db/deleteUser.php?id='.$obj["id"].'"><i class="align-middle" data-feather="trash-2"></i></a>
-                                        </td><td><input class="check-input align-middle mx-3" name="chk[ ]" type="checkbox" value="'.$obj["id"].'"></td>
+                                        </td><td><label width="100%" height="100%"><input class="check-input align-middle mx-3" name="chk[ ]" type="checkbox" value="'.$obj["id"].'"><label></td>
                                     </tr>';
                                     }
                                              

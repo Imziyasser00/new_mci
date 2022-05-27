@@ -39,7 +39,7 @@ $query = mysqli_query($conn,"SELECT * FROM document x ");
                 }  
                 $i++;
                 $counter++;
-                mysqli_query($conn,"UPDATE `document` SET `valide`='1' , `lien` = '$archive_link' WHERE id = ".$obj["id"]);
+                mysqli_query($conn,"UPDATE `document` SET `valide`='1' , `lien` = '$archive_link' ,  `Etat`='perime' WHERE id = ".$obj["id"]);
                 mysqli_query($conn,"INSERT INTO `archive`(`id_doc`) VALUES ('$id_doc')");
 
         }

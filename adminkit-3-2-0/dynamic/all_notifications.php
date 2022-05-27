@@ -14,10 +14,40 @@ include_once("includes/header.php");
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0"></h5>
-                        </div>
+
                         <div class="card-body">
+                            <?php  
+                        if(isset($costum_not)){
+                            foreach ($costum_not as $arr) {
+                                echo ' <a href="" class="list-group-item mt-1" style="height:70px;display:flex;align-items:center;">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-';
+                                        if($arr["type"] == 1){
+                                            echo "warning";
+                                        }elseif($arr["type"] == 2){
+                                            echo "danger";
+                                        }elseif($arr["type"] == 3){
+                                            echo "primary";
+                                        }else{
+                                            echo "success";
+                                        }
+                                        echo '" data-feather="alert-circle"  style="margin-right : 50px;"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-dark">Notification</div>
+                                        <div class="text-muted small mt-1"> '.$arr['message'].'
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>';
+                            }
+                        
+                        
+                        }
+                            
+                        ?>
                             <?php  
                         if(isset($num)){
                             foreach ($num as $arr) {
@@ -59,6 +89,7 @@ include_once("includes/header.php");
                         }
                             
                         ?>
+
                         </div>
                     </div>
                 </div>
