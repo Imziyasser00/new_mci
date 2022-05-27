@@ -236,18 +236,33 @@ include("db/file_system.php");
 
 
                     </ul>
+                    <li id="other_top"
+                        class="sidebar-item <?php echo (basename($_SERVER['PHP_SELF'])=="listeUsers.php"||"")?"active":""; ?>">
+                        <div id="" class="sidebar-link">
+                            <i class="align-middle" data-feather="more-horizontal"></i> <span
+                                class="align-middle">Others</span>
+                        </div>
 
+                    </li>
 
-
-
+                    <ul id="other">
+                        <a class="sidebar-link" href="mail.php">
+                            <li class="sidebar-link" id="audit_int"><i class="align-middle" data-feather="at-sign"></i>
+                                <span class="align-middle">E-mail</span>
+                            </li>
+                        </a>
+                        <a class="sidebar-link" href="notification.php">
+                            <li class="sidebar-link" id="audit_int"><i class="align-middle" data-feather="bell"></i>
+                                <span class="align-middle">Notification</span>
+                            </li>
+                        </a>
+                    </ul>
                     <li
                         class="sidebar-item <?php echo (basename($_SERVER['PHP_SELF'])=="pages-blank.php")?"active":""; ?>">
                         <a class="sidebar-link" href="pages-blank.php">
                             <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
                         </a>
-
                     </li>
-
 
                 </ul>
             </div>

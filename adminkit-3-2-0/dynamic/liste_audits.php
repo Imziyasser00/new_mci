@@ -98,7 +98,7 @@ include_once("includes/header.php");
                                         <td>'.$fdatep.'</td>
                                         <td class="table-action">
                                             <a href="modAudit.php?id='.$num.'&annee='.$annee.'&ra='.$a[0].'&au='.$a[1].'&ob='.$a[2].'" class="confirmation"><i class="align-middle feather feather-trash align-middle" data-feather="edit-2"></i></a>
-                                            <a href="db/deleteAudit.php?id='.$num.'" class="confirmation"><i class="align-middle" data-feather="trash-2"></i></a>
+                                            <a href="db/deleteAudit.php?id='.$num.'&ann='.$annee.'" class="confirmation"><i class="align-middle" data-feather="trash-2"></i></a>
                                         </td>
                                         ';      
                                     }
@@ -119,6 +119,15 @@ include_once("includes/header.php");
 </div>
 
 <script src="js/app.js"></script>
+
+<script>
+<?php 
+if(isset($_SESSION["pln"])){
+    echo "alert('le plan est déja confirmé , tu peux pas le modifier')";
+}
+
+?>
+</script>
 
 </body>
 

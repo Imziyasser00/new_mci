@@ -15,7 +15,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6 mt-2">
-                                    <h2 class="h2">Diffusion par Doc</h2>
+                                    <h2 class="h2">Annuler Diffusion par Doc</h2>
                                 </div>
                                 <div class="col-md-5">
 

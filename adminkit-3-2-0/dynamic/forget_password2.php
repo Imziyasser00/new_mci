@@ -29,44 +29,34 @@
                     <div class="d-table-cell align-middle">
 
                         <div class="text-center mt-4">
-                            <h1 class="h2 mb-5">Connectez-vous</h1>
+                            <h1 class="h2 mb-5">Reset Password</h1>
                         </div>
 
                         <div class="card">
                             <div class="card-body">
                                 <div class="m-sm-4">
                                     <div class="text-center">
+                                        <?php 
+                                        if(isset($_SESSION["mail_incorrect"])){
+                                            echo '<div class="alert alert-danger alert-dismissible" role="alert">
+											<div class="alert-message">
+												<strong>Hello there!</strong> A simple danger alert—check it out!
+											</div>
+										</div>';
+                                        }
+                                        ?>
 
                                     </div>
-                                    <form action="db/login-action.php" method="post">
+                                    <form action="db/forget_password1.php" method="post">
                                         <div class="mb-3">
-                                            <label class="form-label">Identifiant</label>
-                                            <input class="form-control form-control-lg" type="username" name="username"
-                                                placeholder="Identifiant" required />
+                                            <label class="form-label">New password</label>
+                                            <input type="hidden" value="<?php echo $_GET["id"]; ?>" name="id">
+                                            <input class="form-control form-control-lg" type="text" name="password"
+                                                placeholder="password" required />
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Mot de passe</label>
-                                            <input class="form-control form-control-lg" type="password" name="password"
-                                                placeholder="Mot de passe" required />
-                                            <small>
-                                                <a href="forget_password.php">Forgot password?</a>
-                                            </small>
-                                        </div>
-                                        <div>
-                                            <label class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="remember-me"
-                                                    name="remember-me" checked>
-                                                <div class="row">
-                                                    <span class="form-check-label">
-                                                        Remember me next time
-                                                    </span>
-                                                </div>
 
-
-                                            </label>
-                                        </div>
                                         <div class="text-center mt-3">
-                                            <button name="connecter" class="btn btn-lg btn-primary">Connexion</button>
+                                            <button name="connecter" class="btn btn-lg btn-primary">Valider</button>
                                             <!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
                                         </div>
                                     </form>

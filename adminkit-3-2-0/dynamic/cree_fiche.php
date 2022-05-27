@@ -141,7 +141,7 @@ include_once("includes/header.php");
 													$nom=$obj['nom'];																	
 													$prenom=$obj['prenom'];																	
 													$n=$obj['id'];																	
-													echo '<option value="'.$n;'"';
+													echo '<option value="'.$n.'"';
                                                     if(isset($arr)){
                                                         if($n == $arr[3]){
                                                             echo 'selected ';

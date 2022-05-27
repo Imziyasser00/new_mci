@@ -1,6 +1,7 @@
 <?php 
 
 include("./connexion.php");
+$num = $_POST["num"];
 if(isset($_POST["Valider"])){
     echo $date = $_POST["date"];
     echo $heure = $_POST["heure"];
@@ -8,7 +9,6 @@ if(isset($_POST["Valider"])){
     
     print_r($presence = $_POST["presence"]);
     print_r($presence=explode(",",$presence[0]));
-    $num = $_GET["num"];
     print_r($presence);
     mysqli_query($conn,"INSERT INTO `reunionouverture`(`date`, `time`, `numero`) VALUES ('$date','$heure','$num')");
     foreach($presencex as $element){
@@ -17,9 +17,8 @@ if(isset($_POST["Valider"])){
     
     header("Location: ../add_fiche2.php?num=$num");
 }else{
-    $num = $_POST["num"];
-    echo $num;
-header("Location: ./add_fiche.php?num=".$num."&action=back");
+   
+header("Location: ../cree_fiche.php?num=".$num."&action=back");
 }
 
 

@@ -1,6 +1,7 @@
 <?php 
 
 include("./connexion.php");
+$num = $_POST["num"];
 if(isset($_POST{"Valider"})){
 
     echo $date = $_POST["date"];
@@ -9,7 +10,6 @@ if(isset($_POST{"Valider"})){
     
     print_r($presence = $_POST["presenceClo"]);
     print_r($presence=explode(",",$presence[0]));
-     $num = $_POST["num"];
      
      print_r($presence);
      mysqli_query($conn,"INSERT INTO `reunioncloture`(`date`, `time`, `numero`) VALUES ('$date','$heure','$num')");
@@ -21,7 +21,7 @@ if(isset($_POST{"Valider"})){
         header("Location: ../add_fiche.php?num=$num");
         
     }else{
-        $num = $_GET["num"];
+        
         mysqli_query($conn,"DELETE * FROM  `reunionouverture`WHERE numero = $num");
         
         mysqli_query($conn,"DELETE * FROM  `presenceouverture`WHERE num_audit = $num");

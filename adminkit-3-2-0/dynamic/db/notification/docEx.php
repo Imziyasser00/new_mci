@@ -1,7 +1,8 @@
 <?php 
 
 
-
+error_reporting( E_ALL );
+    ini_set( "display_errors", 0 );
 $i = 0;
 function dateDiffInDays($date1, $date2) 
   {
@@ -14,7 +15,7 @@ function dateDiffInDays($date1, $date2)
   }
   
 
-$query = mysqli_query($conn,"SELECT * FROM document where valide='0' ");
+$query = mysqli_query($conn,"SELECT * FROM document x ");
 
     while($obj = $query->fetch_assoc()){
         $date = $obj["DATTREV"];
@@ -39,17 +40,29 @@ $query = mysqli_query($conn,"SELECT * FROM document where valide='0' ");
                 $i++;
                 $counter++;
                 mysqli_query($conn,"UPDATE `document` SET `valide`='1' , `lien` = '$archive_link' WHERE id = ".$obj["id"]);
-                mysqli_query($conn,"INSERT INTO `archive`(`id_doc`) VALUES ('د$id_doc')");
+                mysqli_query($conn,"INSERT INTO `archive`(`id_doc`) VALUES ('$id_doc')");
 
         }
-        if(dateDiffInDays($newformat,$today) == 30){
-            $reminder[$i]["nom"] = $obj["nom"];
-            $reminder[$i]["id"] = $obj["id"];
-        }
+       
         
     }
 
+    $qq = mysqli_query($conn,"SELECT * FROM document x ");
 
+    $i = 0;
+    while($obj = $qq->fetch_assoc()){
+        $date = $obj["DATTREV"];
+        $time = strtotime($date);
+       $today = date('Y-m-d');
+      
+       $newformat = date('Y-m-d',$time);
+    if(dateDiffInDays($newformat,$today) == 30){
+        $reminder[$i]["nom"] = $obj["nom"];
+        $reminder[$i]["id"] = $obj["id"];
+        $i++;
+        $counter++;
+    }
+    }
 
 
 ?>

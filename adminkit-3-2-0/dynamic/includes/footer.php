@@ -77,6 +77,13 @@ $(document).ready(function() {
     });
 });
 </script>
+<script>
+$(document).ready(function() {
+    $("#other_top").click(function() {
+        $("#other").slideToggle(500);
+    });
+});
+</script>
 
 
 <script>

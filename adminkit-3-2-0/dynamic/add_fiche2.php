@@ -25,6 +25,7 @@ include_once("includes/header.php");
                                     </div>
                                     <div class="col-md-4">
 
+
                                         <?php 
                                         $sql = mysqli_query($conn,"SELECT * FROM auditeurprevu WHERE numero_audit = '".$_GET["num"]."' and fonction = 1");
                                         $data = $sql->fetch_assoc();
